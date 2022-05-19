@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --clr-bgr: #282d35;
+  --clr-font: #fff;
+  --clr-nav: #21222a;
+}
+.light-theme {
+  --clr-bgr: #fff;
+  --clr-font: #282d35;
+  --clr-nav: #e0e0e0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Oswald", sans-serif;
+  background-color: var(--clr-bgr);
+  transition: all 0.3s linear;
+}
+
+@keyframes xoayvong {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+nav {
+  display: flex;
+  align-items: center;
+  background-color: var(--clr-nav);
+  padding: 30px 35px;
+  height: 100px;
+  transition: all 0.3s linear;
+}
+.logo {
+  width: auto;
+  height: 150%;
+  animation: xoayvong 10s linear 0s infinite;
+  -webkit-animation: xoayvong 10s linear 0s infinite;
+  -moz-animation: xoayvong 10s linear 0s infinite;
+  -o-animation: xoayvong 10s linear 0s infinite;
+}
+
+nav > h3,
+nav > h4 {
+  margin: 0;
+}
+
+nav > h3 {
+  margin-right: auto;
+  color: #61dafb;
+  font-size: 25px;
+  padding-left: 15px;
+  font-weight: 700;
+}
+nav > h4 {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.toggler--slider {
+  font-size: 30px;
+  color: var(--clr-font);
+}
+/* main */
+main {
+  padding: 50px;
+  color: var(--clr-font);
+  font-size: 18px;
+  background-image: url(./React-icon.svg.png);
+  background-position-x: 90%;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: 500px;
+}
+main > h1 {
+  margin: 0;
+  font-size: 50px;
+}
+main > ul {
+  padding-top: 30px;
+}
+main > ul > li {
+  padding: 5px 0;
+}
+main > ul > li::marker {
+  color: #61dafb;
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  main {
+    background-size: 200px;
+  }
+}
+@media (max-width: 739px) {
+  main {
+    background-image: none;
+  }
+}

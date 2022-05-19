@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600&family=Oswald:wght@200;300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./data.js"></script>
+    <script type="text/babel">
+      function Navbar() {
+        return (
+          <nav className="navbar-header">
+            <i className="ri-earth-fill"></i>
+            <h4 className="title">My travel journal </h4>
+          </nav>
+        );
+      }
+
+      function Container(props) {
+        return (
+          <div className="container">
+            <div className="image">
+              <img className="img" src={props.img} />
+            </div>
+            <div className="container-body">
+              <div className="location">
+                <i className="ri-map-pin-fill"></i>
+                <span className="nation">{props.location}</span>
+                <a href="" className="google-map">
+                  View on Google Maps
+                </a>
+              </div>
+              <h3 className="name">{props.name}</h3>
+              <span className="date">
+                {props.StartDate} - {props.EndDate}
+              </span>
+
+              <p className="description">{props.description}</p>
+            </div>
+          </div>
+        );
+      }
+
+      function App() {
+        const datas = data.map((item) => {
+          return (
+            <Container
+              key={item.id}
+              img={item.img}
+              location={item.location}
+              name={item.name}
+              StartDate={item.StartDate}
+              EndDate={item.EndDate}
+              description={item.description}
+            />
+          );
+        });
+        return (
+          <div>
+            <Navbar />
+            <div className="list">{datas}</div>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

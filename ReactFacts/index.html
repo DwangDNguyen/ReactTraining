@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600&family=Oswald:wght@200;300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/e9fd377d69.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Navbar(props) {
+        return (
+          <nav className={props.darkMode ? "light-theme" : ""}>
+            <img src="./React-icon.svg.png" className="logo" />
+            <h3> ReactFacts </h3>
+            <div className="toggler--slider" onClick={props.toggleDarkMode}>
+              <i class="fa-solid fa-toggle-off btn"></i>
+            </div>
+          </nav>
+        );
+      }
+      function Main(props) {
+        return (
+          <main className={props.darkMode ? "light-theme" : ""}>
+            <h1> Fun facts about React </h1>
+            <ul>
+              <li>Was first released in 2013</li>
+              <li>Was originally created by Jordan Walke</li>
+              <li>Has well over 10OK stars on GitHub</li>
+              <li>Is maintained by Facebook</li>
+              <li>
+                Powers thousands of enterprise apps, including mobile apps
+              </li>
+            </ul>
+          </main>
+        );
+      }
+      function App() {
+        const root = document.getElementById("root");
+        const body = root.parentElement;
+        const [mode, setMode] = React.useState(false);
+        function toggleDarkMode() {
+          const btn = document.querySelector(".btn");
+          const btnMode = document.querySelector(".toggle--slider");
+          setMode((prevMode) => {
+            btn.classList.toggle("fa-toggle-on");
+            body.classList.toggle("light-theme");
+            return !prevMode;
+          });
+        }
+        return (
+          <div className="container">
+            <Navbar darkMode={mode} toggleDarkMode={toggleDarkMode} />
+            <Main darkMode={mode} />
+          </div>
+        );
+      }
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
